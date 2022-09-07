@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref = "/community-requests/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf='profile' >
+
+
+  
+
+  <!-- <ion-input type="file"
+         id="avatar" name="avatar"
+         accept="image/png, image/jpeg" (change)="uploadToFireStorage($event)"></ion-input> -->
+
+  <ion-grid class='ion-padding max-width margin-center ion-text-center'>
+    <ion-row>
+      <ion-col offset ='3' size='6'>
+        <ion-spinner *ngIf='isUploading'></ion-spinner>
+        <img *ngIf='!isUploading' [src]='profile.photoURL'  style="width: 100%;;border-radius: 50%; border: 3px solid orange;">
+        <ion-button color='primary' shape='round' *ngIf='this.isMyProfile' (click)='onUploadPhoto()'>
+          <ion-icon name='cloud-upload' slot = 'start'></ion-icon>Upload</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      
+      <ion-col offset-sm ='2' size-sm='8'>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left">
+              <h1><b>Name:</b></h1>
+              <ion-text>{{profile.firstName|titlecase}} {{profile.middleName|titlecase}} {{profile.lastName|titlecase}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Username:</b></h1>
+              <ion-text>{{profile.username}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Email:</b></h1>
+              <ion-text>{{profile.email}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Gender:</b></h1>
+              <ion-text>{{profile.gender}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Age:</b></h1>
+              <ion-text>{{age}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Phone Number:</b></h1>
+              <ion-text>{{profile.phoneNumber}}</ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-left" >
+              <h1><b>Address:</b></h1>
+              <ion-text>{{profile.address1}}</ion-text><br>
+              <ion-text>{{profile.address2}}</ion-text><br>
+              <ion-text><b>City: </b>{{profile.city}}</ion-text><br>
+              <ion-text><b>State: </b>{{profile.state}}</ion-text><br>
+              <ion-text><b>Country: </b>{{profile.country}}</ion-text><br>
+              <ion-text><b>Zip Code/PO Box: </b>{{profile.poBox}}</ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    
+      <ion-row>
+        <ion-col offset-sm ='2' size-sm='8'>
+          <ion-item lines="none">
+            <ion-label class="ion-text-left" >
+                <h1><b>Map:</b></h1>
+                <!-- <ion-img [src]='profile.placeLocation.staticMapImageUrl' class='map'></ion-img> -->
+                <app-location-picker
+                [selectedLocationImage]='profile.placeLocation.staticMapImageUrl' 
+                [selectable]= 'isMyProfile'
+                [placeLocation]='profile.placeLocation'
+                (locationPick)='onLocationPick($event)'></app-location-picker>
+            </ion-label>
+
+            <!-- <app-location-picker
+                [selectedLocationImage]='profile.placeLocation.staticMapImageUrl' 
+                [selectable]= false 
+                [placeLocation]='profile.placeLocation'></app-location-picker> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,24 @@
+// @font-face {
+//     font-family: 'Bradley Hand ITC Custom';
+//     src: url('/assets/fonts/Bradley_Hand_ITC.woff2') format("woff2");
+//     font-weight: 200;
+//     font-style: normal;
+//   }
+
+@font-face {font-family: "Bradley Hand ITC Custom";
+    src: url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.eot"); /* IE9*/
+    src: url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.woff2") format("woff2"), /* chrome、firefox */
+    url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.woff") format("woff"), /* chrome、firefox */
+    url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("/assets/fonts/0252223e8c36008b595f5e379ad5e524.svg#Bradley Hand ITC V2") format("svg"); /* iOS 4.1- */
+  }
+
+  @font-face {font-family: "Fugaz One";
+    src: url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.eot"); /* IE9*/
+    src: url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.woff2") format("woff2"), /* chrome、firefox */
+    url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.woff") format("woff"), /* chrome、firefox */
+    url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("/assets/fonts/6bb72788de0e0eb09756d36c0ba629cf.svg#Fugaz One") format("svg"); /* iOS 4.1- */
+  }  

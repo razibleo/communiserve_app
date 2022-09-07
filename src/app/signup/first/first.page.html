@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref = "/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='primary' class='ion-padding'>
+  <ion-grid class="max-width">
+
+    <ion-row class='ion-padding'>
+      <ion-col style='max-width:500px'>
+        <ion-label>
+          <h1 style='color: white; font-size: xx-large; font-family:"Bradley Hand ITC Custom"; font-weight: bold;'>Sign Up</h1>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+
+
+      <div style='background-color:white; padding:4%; border-radius: 7%; max-width: 500px; margin:0 auto;'>
+        <ion-row>
+          <ion-col >
+    
+              <div style='position:relative; width: 100%; overflow: auto;'>
+                <ion-item style="width: 90%; float: left;">
+                  <ion-label position="floating" >Username</ion-label>
+                  <ion-input ngModel name='username' #usernameInput #username='ngModel' minlength="7" required></ion-input>
+                </ion-item>
+                <div style="float: left; width:10%;" *ngIf="username.dirty && username.valid">
+                  <ion-spinner  name="lines" style="margin-top:50%" *ngIf="isUsernameChecking"></ion-spinner>
+                  <ion-icon name="checkmark-circle" style="margin-top:50%" color="success" *ngIf="!isUsernameChecking && isUsernameValid"> </ion-icon>
+                  <ion-icon name="close-circle" style="margin-top:50%" color="danger" *ngIf="!isUsernameChecking && !isUsernameValid"> </ion-icon>
+                </div>
+              </div>
+              <small class="red ion-padding" *ngIf='username.dirty && username.valid && !isUsernameChecking && !isUsernameValid'>The username is already is use</small>
+              <small class="red ion-padding" *ngIf='username.invalid && username.touched'>Username is Required</small>
+        
+                    
+              <div style='position:relative; width: 100%; overflow: auto;'>
+                <ion-item style="width: 90%; float: left;">
+                  <ion-label position="floating" >Email</ion-label> 
+                  <ion-input ngModel name='email' #email='ngModel' #emailInput type='email' required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+                </ion-item> 
+                <div style="float: left; width:10%;" *ngIf="email.dirty && email.valid">
+                  <ion-spinner  name="lines" style="margin-top:50%" *ngIf="isEmailChecking"></ion-spinner>
+                  <ion-icon name="checkmark-circle" style="margin-top:50%" color="success" *ngIf="!isEmailChecking && isEmailValid"> </ion-icon>
+                  <ion-icon name="close-circle" style="margin-top:50%" color="danger" *ngIf="!isEmailChecking && !isEmailValid"> </ion-icon>
+                </div>      
+              </div>
+              <small class="red ion-padding" *ngIf='email.dirty && email.valid && !isEmailChecking && !isEmailValid'>The email is already is use</small>
+              
+              
+              
+              <ion-item>
+                <ion-label position="floating" >First Name</ion-label>
+                <ion-input ngModel name='firstName' #firstName='ngModel' type='text' pattern="[a-zA-Z ]*" required ></ion-input>
+              </ion-item>
+              <!-- <small class="red ion-padding" *ngIf='firstName.invalid && firstName.touched'>First Name is Required</small> -->
+              <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+                <small class="ion-padding red" *ngIf="firstName.errors?.pattern else noFirstName">First Name can only contain letters</small>
+                <ng-template #noFirstName>
+                  <small class="ion-padding red" >A First Name is Required</small>
+                </ng-template>
+              </div>
+              
+          
+              <ion-item>
+                <ion-label position="floating" >Middle Name</ion-label>
+                <ion-input ngModel name='middleName' #middleName='ngModel' type='text' pattern="[a-zA-Z ]*" ></ion-input>
+              </ion-item>
+              <small class="ion-padding red" *ngIf='middleName.invalid' >Middle Name can only contain letters</small>
+           
+              
+          
+              <ion-item>
+                <ion-label position="floating" >Last Name</ion-label>
+                <ion-input ngModel name='lastName' #lastName='ngModel' type='text' required pattern="[a-zA-Z ]*" ></ion-input>
+              </ion-item>
+              <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+                <small class="ion-padding red" *ngIf="lastName.errors?.pattern else noLastName">Last Name can only contain letters</small>
+                <ng-template #noLastName>
+                  <small class="ion-padding red" >A Last Name is Required</small>
+                </ng-template>
+              </div>
+              <!-- <small class="red ion-padding" *ngIf='lastName.invalid && lastName.touched'>Last Name is Required</small> -->
+          
+              <ion-item>
+                <ion-label position="floating" >Password</ion-label>
+                <ion-input ngModel name='password' #password='ngModel' type='password' required pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'></ion-input>
+              </ion-item>
+              <div class="ion-padding-start" *ngIf="password.invalid && (password.touched || password.dirty)">
+                <small class="red" *ngIf="password.errors?.pattern else noPassword">Password must contain at least 8 characters, uppercase, lowercase and special characters</small>
+                <ng-template #noPassword>
+                  <small class="red" >Password is Required</small>
+                </ng-template>
+              </div>
+              <!-- <small class="red ion-padding" *ngIf='password.invalid && password.touched'>Password is Required</small> -->
+          
+          
+              <ion-item>
+                <ion-label position="floating">Confirm Password</ion-label>
+                <ion-input ngModel name='confirmPassword' #confirmPassword='ngModel' type='password' required (ionChange)='comparePassword(password.value, confirmPassword.value)'></ion-input>
+              </ion-item>
+              <small class="red ion-padding" *ngIf='(confirmPassword.dirty) && !passValid'>Passwords do not match</small>
+              
+              <ion-item >
+                <ion-label position="floating"> Gender</ion-label>
+                <ion-select interface="alert" required name="gender" ngModel #gender="ngModel"> 
+                  <ion-select-option value="Male">Male</ion-select-option>
+                  <ion-select-option value="Female">Female</ion-select-option>
+              </ion-select>
+              </ion-item>
+          
+              <ion-item class='ion-margin-bottom'>
+                <ion-label position="floating">DD/MM/YYYY</ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" max="{{maxDate | date:'y-MM-dd'}}" required name="dob" ngModel #DOB="ngModel"></ion-datetime>
+              </ion-item>
+          
+            
+          </ion-col>
+        </ion-row>
+      </div>
+
+    
+    <ion-row class='ion-text-center ion-padding'>
+      <ion-col>
+        <ion-button color='light' expand='block' shape='round' style="max-width: 500px; margin: 0 auto;" type="submit" [disabled]='registrationForm.invalid || !isEmailValid || !isUsernameValid'><ion-label style='color: var(--ion-color-primary);'>Next</ion-label></ion-button>
+      </ion-col>
+    </ion-row>
+  </form> 
+  </ion-grid>
+    
+<!-- 
+  <ion-button [routerLink]="['/community-requests/home']">home</ion-button> -->
+</ion-content>

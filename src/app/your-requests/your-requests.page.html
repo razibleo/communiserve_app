@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons>
+      <ion-menu-button menu="first"></ion-menu-button>
+      <ion-title>Your Requests</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf='isLoading'>
+  <div style='position: relative; top: 50%; transform: translateY(-50%);' class='ion-text-center'><ion-spinner color='primary'></ion-spinner></div>
+</ion-content>
+
+
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" style='margin-right: 5%; margin-bottom: 5%'>
+  <ion-fab-button (click)='addRequest()' >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+<ion-content  *ngIf='!isLoading'>
+  <ion-row class='ion-padding'>
+    <ion-col>
+      <ion-segment (ionChange)="segmentChanged($event)" color='primary' value='Pending' scrollable='true'>
+        <ion-segment-button value="Pending">
+          <ion-label>Pending</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Accepted">
+          <ion-label>Accepted</ion-label>
+        </ion-segment-button>
+      </ion-segment>    
+    </ion-col>
+  </ion-row>
+
+  <ion-grid style="max-width: 350px;"> 
+    <ion-row class="ion-justify-content-center">
+      <ion-col  class="ion-text-center "> 
+        <ion-list class='ion-padding' *ngIf='!isLoading'>
+          <ion-item *ngFor='let requestItem of requestsList; let i = index' lines = 'none' class = 'ion-text-center'>
+            <ion-card (click)='onClickRequest(i)' style='border: 1px solid var(--ion-color-primary);'>
+              <ion-card-header>
+                <ion-card-title><b>Request: {{i+1}}</b></ion-card-title>
+                <ion-card-subtitle>
+                  <ion-label [color]='getColor(requestItem.status)'>Status: {{requestItem.status}} </ion-label><br>
+                  <ion-label *ngIf='requestItem.status=="Accepted"'>Accepted by: {{requestItem.acceptedByUsername}}</ion-label>
+                </ion-card-subtitle>
+                <ion-card-content style='padding-bottom: 0;'>
+                  <b>Total items: {{requestItem.shoppingList.length}}</b><br>
+                  
+                </ion-card-content>
+                Submitted on: {{requestItem.submittedDate | date:'dd/MM/yyyy'}} at {{requestItem.submittedDate | date:'HH:mm'}}<br>
+                <!-- <ion-button color = "primary" fill="clear"
+                [routerLink] ="['/your-requests/your-requests-detail', i]">More</ion-button> -->
+              </ion-card-header>
+            </ion-card>
+          </ion-item>
+          
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+</ion-grid>
+
+<ion-content *ngIf='!isLoading &&(requestsList && requestsList.length <=0)'>
+  <div style='position: relative; top: 50%; transform: translateY(-50%);' class='ion-text-center'><ion-label style='font-size: xxx-large;font-weight: bold;opacity: 0.2; '>Empty</ion-label></div>
+</ion-content>
+
+</ion-content>

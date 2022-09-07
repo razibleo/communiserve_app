@@ -1,0 +1,78 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+  
+</ion-header> -->
+
+<ion-content color='primary' class='ion-padding' >
+
+  <ion-grid style='max-width: 700px;'>
+    <ion-row>
+      <ion-col size-sm='8'offset-sm='2' >
+        <div style='margin:40% auto 0 auto'>
+          <div style="margin: 0 auto;">
+            <h1 class='ion-text-center' style='font-family:"Fugaz One"; font-size: xx-large ;margin:15% 0;'>Communiserve</h1>
+            <h1 style='color: white; font-size: xx-large;font-family:"Bradley Hand ITC Custom"; font-weight: bold;' class='ion-padding-start'>Login</h1>
+        
+            <div style='background-color:white;padding:4%; border-radius: 8%;'>
+              <ion-grid class="max-width">
+                <ion-row>
+                  <ion-col size='12'>
+                    <form #loginForm="ngForm" (ngSubmit)="onSignIn(loginForm)">
+                         
+                      <ion-item class='ion-margin'>
+                        <ion-input class="ion-padding" placeholder="  Email" ngModel name='email' #email='ngModel' type='email' required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+                      </ion-item>
+                      <small class="red ion-padding" *ngIf='email.invalid && email.touched'>Email is Required</small>
+            
+                      <ion-item class='ion-margin'>
+                        <ion-input class='ion-padding' placeholder="  Password" ngModel name='password' #password='ngModel' type='password' required ></ion-input>
+                      </ion-item>
+                      <small class="red ion-padding" *ngIf='password.invalid && password.touched'>Please enter your password</small>
+                           
+                      <ion-button type="submit" [disabled]='loginForm.invalid' expand="block">Login</ion-button>
+            
+                    </form> 
+            
+                    <ion-button [disabled]='isAndroid' (click) ="googleSignin()" style="--background: #de5246" expand="block">
+                      <i class="fa fa-google">  </i> &nbsp;&nbsp;Connect Via Google
+                    </ion-button>    
+            
+            
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col offset ='1' size='10' class='ion-text-center'> 
+                   <ion-text color='secomdary' bold>Dont have an account?<br> <a [routerLink]="['/signup/slides']">Sign Up</a> </ion-text>       
+                  </ion-col>
+                </ion-row>
+            
+                <ion-row>
+                  <ion-col offset ='1' size='10' class="ion-text center" *ngIf='!isRegistered()'> 
+                    <small class="red">There is no account that associated with the entered email address</small>     
+                  </ion-col>
+                </ion-row>
+            
+                <ion-row>
+                  <ion-col offset ='1' size='10' class="ion-text center" *ngIf='signInErrorMessage'> 
+                    <small class="red">{{signInErrorMessage}}</small>     
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+          
+        
+        </div>
+      
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  
+  
+ 
+</ion-content>
