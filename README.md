@@ -63,18 +63,18 @@ It runs using the ionic framework through angular and information is stored on c
 
 <h3>Active Request and History Pages</h3>
 <p float="left" >
-<img src="https://github.com/Razibs/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-16-27-53-108_io.ionic.communiserve.png" width="200">  
-<img src="https://github.com/Razibs/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-20-02-965_io.ionic.communiserve.png" width="200">  
+<img src="https://github.com/razibsarkerleo/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-16-27-53-108_io.ionic.communiserve.png" width="200">  
+<img src="https://github.com/razibsarkerleo/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-20-02-965_io.ionic.communiserve.png" width="200">  
 </p>
 
 
 <h3>Leaderboards</h3>
 <p float="left" >
-<img src="https://github.com/Razibs/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-14-30-635_io.ionic.communiserve.png" width="200">  
+<img src="https://github.com/razibsarkerleo/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-14-30-635_io.ionic.communiserve.png" width="200">  
 </p>
 
 <h3>Rewards Page(Incomplete)</h3>
-<img src="https://github.com/Razibs/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-16-39-733_io.ionic.communiserve.png" width="200"> 
+<img src="https://github.com/razibsarkerleo/communiserve_app/blob/main/screenshots/Screenshot_2020-11-08-18-16-39-733_io.ionic.communiserve.png" width="200"> 
 
 
 
